@@ -1,0 +1,54 @@
+<!-- empty wishlist -->
+
+<div *ngIf="wishlist.length==0" class="container m-5">
+
+    <div class="row">
+
+        <div class="col text-center">
+
+            <img src="https://tse3.mm.bing.net/th?id=OIP.tr-g8hu0-qTz2Wzk8QDAOAHaFX&pid=Api&P=0&h=180" alt="">
+
+            <div class="h3">Your Wishlist Is Empty</div>
+            <a routerLink="" class="btn btn-primary">Add Items</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- wishlist card -->
+<div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div *ngFor="let product of wishlist" class="col mb-5">
+            <div  class="card h-100 p-3">
+                <!-- Product image-->
+                <img height="200px;"  class="card-img-top" [src]="product.image" [alt]="product.title" />
+                <!-- Product details-->
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <!-- Product name-->
+                        <h5 class="fw-bolder">{{product.title}}...</h5>
+                        <!-- Product price-->
+                     {{product.price}} 
+                    </div> 
+                </div> 
+                <!-- Product actions-->
+                <div class=" d-flex p-4 pt-0 border-top-0 bg-transparent justify-content-between">
+                    <div class="text-center"><button class="btn btn-outline-dark mt-auto btn-primary" routerLink="/products/view-product/1">  <i  class="fa-solid fa-eye "></i></button></div>
+               
+        <button (click)="addtocart(product)" class="btn btn-success" routerLink="products/cart">
+
+            <i  class="fa-solid fa-cart-plus  "></i>
+
+        </button>
+               
+        <button (click)="removeItem(product.id)" class="btn btn-danger" >
+
+            <i  class="fa-solid fa-trash-can  "></i>
+
+        </button>
+               
+               
+                </div>
+            </div>
+        </div>
+        </div>
